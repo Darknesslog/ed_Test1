@@ -1,0 +1,34 @@
+### Получить информацию о приложении
+GET http://127.0.0.1:8000/
+
+### Проверить здоровье
+GET http://127.0.0.1:8000/health
+
+### Получить все элементы
+GET http://127.0.0.1:8000/items/
+
+### Получить элемент по ID
+GET http://127.0.0.1:8000/items/1
+
+### Создать новый элемент
+POST http://127.0.0.1:8000/items/
+Content-Type: application/json
+
+{
+  "name": "Телефон",
+  "description": "Смартфон",
+  "price": 30000
+}
+
+### Обновить элемент
+PUT http://127.0.0.1:8000/items/1
+Content-Type: application/json
+
+{
+  "name": "Ноутбук Pro",
+  "description": "Мощный ноутбук",
+  "price": 60000
+}
+
+### Удалить элемент
+DELETE http://127.0.0.1:8000/items/1
