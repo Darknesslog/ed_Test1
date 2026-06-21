@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniMarket — Учебный каталог</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>MiniMarket</h1>
+      <p class="tagline">Учебный интернет‑магазин для рабочего места</p>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <section class="catalog">
+      <h2>Каталог товаров</h2>
+      <div class="products">
+        <article class="product">
+          <img src="images/keyboard.svg" alt="Клавиатура">
+          <h3>Клавиатура</h3>
+          <p class="desc">Механическая клавиатура с компактным корпусом.</p>
+          <ul class="props"><li>Механика</li><li>RGB</li><li>Проводная</li></ul>
+          <div class="price">5 000 ₽</div>
+        </article>
+
+        <article class="product">
+          <img src="images/mouse.svg" alt="Мышь">
+          <h3>Мышь</h3>
+          <p class="desc">Оптическая мышь с эргономичной формой.</p>
+          <ul class="props"><li>Оптическая</li><li>Беспроводная</li></ul>
+          <div class="price">1 500 ₽</div>
+        </article>
+
+        <article class="product">
+          <img src="images/lamp.svg" alt="Лампа">
+          <h3>Настольная лампа</h3>
+          <p class="desc">Регулируемая яркость и поворотный штатив.</p>
+          <ul class="props"><li>LED</li><li>Регулируемая</li></ul>
+          <div class="price">2 200 ₽</div>
+        </article>
+
+        <article class="product">
+          <img src="images/stand.svg" alt="Подставка">
+          <h3>Подставка для ноутбука</h3>
+          <p class="desc">Алюминиевая подставка с вентиляцией.</p>
+          <ul class="props"><li>Алюминий</li><li>Регулируемая высота</li></ul>
+          <div class="price">1 800 ₽</div>
+        </article>
+      </div>
+    </section>
+
+    <aside class="checkout">
+      <h2>Оформление заказа</h2>
+      <form id="orderForm">
+        <label><input type="checkbox" name="item" value="Клавиатура"> Клавиатура — 5 000 ₽</label>
+        <label><input type="checkbox" name="item" value="Мышь"> Мышь — 1 500 ₽</label>
+        <label><input type="checkbox" name="item" value="Лампа"> Лампа — 2 200 ₽</label>
+        <label><input type="checkbox" name="item" value="Подставка"> Подставка — 1 800 ₽</label>
+        <div class="form-actions">
+          <button type="submit">Оформить</button>
+        </div>
+      </form>
+      <div id="orderResult" class="order-result" aria-live="polite"></div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Учебная страница — MiniMarket. Контакты: <a href="mailto:example@example.com">example@example.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const checked = Array.from(document.querySelectorAll('input[name="item"]:checked')).map(i => i.parentElement.textContent.trim());
+      const result = document.getElementById('orderResult');
+      if (!checked.length) {
+        result.textContent = 'Пожалуйста, выберите хотя бы один товар.';
+        result.style.color = 'crimson';
+        return;
+      }
+      result.style.color = '';
+      result.textContent = 'Заказ принят: ' + checked.join(', ');
+    });
+  </script>
+</body>
+</html>
